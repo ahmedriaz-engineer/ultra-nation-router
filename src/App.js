@@ -1,24 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import AllNation from './components/AllNation/AllNation';
+import Detail from './components/Detail/Detail';
+
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <Router>
+      <header>
+        <h1>Ultra Nation</h1>
+        <nav>
+          <a href="/nations">All Nation</a>
+        </nav>
       </header>
-    </div>
+
+      <Switch>
+        <Route path="/nations">
+          <AllNation></AllNation>
+        </Route>
+        <Route path="/nation/detail/:name">
+          <Detail></Detail>
+        </Route>
+        <Route exact path="/">
+          <AllNation></AllNation>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
